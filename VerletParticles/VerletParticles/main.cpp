@@ -1,6 +1,3 @@
-#include "imgui/imgui.h"
-#include "imgui/imgui-SFML.h"
-
 #include "Solver.h"
 
 #include <iostream>

@@ -28,7 +28,7 @@ private:
 
 			float dst = PointSegmentDistance(mouse_pos, constraint.p1->position, constraint.p2->position);
 
-			if (dst <= min_distance) {
+			if (dst < min_distance) {
 
 				min_distance = dst;
 				closest = (Constraint*)(&constraint);
