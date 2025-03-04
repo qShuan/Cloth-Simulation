@@ -1,8 +1,0 @@
-﻿  main.cpp
-D:\Dominik\MyRepos\VerletParticles\VerletParticles\main.cpp(88,20): warning C4353: użyto niestandardowego rozszerzenia: stała 0 jako wyrażenie funkcyjne. Użyj zamiast tego funkcji wewnętrznej "__noop"
-  Trwa generowanie kodu
-  13 of 315 functions ( 4.1%) were compiled, the rest were copied from previous compilation.
-    0 functions were new in current compilation
-    0 functions had inline decision re-evaluated but remain unchanged
-  Zakończono generowanie kodu
-  VerletParticles.vcxproj -> D:\Dominik\MyRepos\VerletParticles\x64\Release\VerletParticles.exe

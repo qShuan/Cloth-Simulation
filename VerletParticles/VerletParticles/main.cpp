@@ -79,6 +79,8 @@ int main(){
 	text.setFont(font);
 	text.setString("LMB - Tear\nRMG - Pull\nR - Reset\nP - Pause");
 
+	bool isLeftClick = false, isRightClick = false;
+
 	while (window.isOpen()) {
 
 		sf::Event e;
@@ -103,6 +105,8 @@ int main(){
 
 				if (e.key.code == sf::Mouse::Right) {
 
+					isRightClick = true;
+
 					sf::Vector2f localPosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
 
 					for (auto& particle : solver.GetParticles()) {
@@ -117,18 +121,30 @@ int main(){
 						}
 					}
 				}
+
+				if (e.key.code == sf::Mouse::Left) {
+
+					isLeftClick = true;
+				}
 			}
 			else if (e.type == e.MouseButtonReleased) {
 
 				if (e.key.code == sf::Mouse::Right) {
 
+					isRightClick = false;
+
 					pulledParticles.clear();
 					pulledDirections.clear();
+				}
+
+				if (e.key.code == sf::Mouse::Left) {
+
+					isLeftClick = false;
 				}
 			}
 		}
 
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Right))
+		if (isRightClick)
 		{
 			sf::Vector2f localPosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
 
@@ -140,7 +156,7 @@ int main(){
 			MousePull(pulledParticles, pulledDirections);
 		}
 
-		if (sf::Mouse::isButtonPressed(sf::Mouse::Left))
+		if (isLeftClick)
 		{
 			sf::Vector2f localPosition = static_cast<sf::Vector2f>(sf::Mouse::getPosition(window));
 

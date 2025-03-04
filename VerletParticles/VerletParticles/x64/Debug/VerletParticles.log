@@ -1,3 +1,0 @@
-﻿  main.cpp
-D:\Dominik\MyRepos\VerletParticles\VerletParticles\main.cpp(50,20): warning C4353: użyto niestandardowego rozszerzenia: stała 0 jako wyrażenie funkcyjne. Użyj zamiast tego funkcji wewnętrznej "__noop"
-  VerletParticles.vcxproj -> D:\Dominik\MyRepos\VerletParticles\x64\Debug\VerletParticles.exe
