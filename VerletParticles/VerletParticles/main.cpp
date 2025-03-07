@@ -77,7 +77,7 @@ int main(){
 
 	sf::Text text;
 	text.setFont(font);
-	text.setString("LMB - Tear\nRMG - Pull\nR - Reset\nP - Pause");
+	text.setString("LMB - Tear\nRMB - Pull\nR - Reset\nP - Pause");
 
 	bool isLeftClick = false, isRightClick = false;
 
