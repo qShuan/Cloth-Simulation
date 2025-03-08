@@ -2,6 +2,7 @@
 
 ## Overview
 This project aims to simulate cloth physics using Verlet Integration and Thomas Jakobsen constraint method.
+Inspired by https://www.youtube.com/@PezzzasWork
 
 ![ClothSimulation](https://github.com/user-attachments/assets/5d6783dd-edab-4b5a-9d54-321af4beacb2)
 
