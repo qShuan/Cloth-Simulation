@@ -1,4 +1,4 @@
-# Cloth-Simulation
+# Cloth Simulation
 
 ## Overview
 This project aims to simulate cloth physics using Verlet Integration and Thomas Jakobsen constraint method.
