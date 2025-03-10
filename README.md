@@ -19,7 +19,7 @@ Inspired by https://www.youtube.com/@PezzzasWork
 1. **Clone the repository**
    ```bash
    git clone https://github.com/qShuan/Cloth-Simulation.git
-   cd Sand-Box
+   cd Cloth-Simulation
 
 2. **Open the solution**
    
