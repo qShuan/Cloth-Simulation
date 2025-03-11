@@ -1,5 +1,4 @@
 #pragma once
-#include "Particle.h"
 #include "Constraint.h"
 #include <vector>
 
@@ -16,6 +15,7 @@ private:
 
 	sf::Vector2f gravity = { 0.f, 500.f };
 	sf::VertexArray va;
+	std::vector<Particle> particles;
 	std::vector<Constraint> constraints;
 
 	Constraint* FindClosestConstraint(sf::Vector2f mouse_pos, const std::vector<Constraint>& constraints) {
@@ -57,59 +57,6 @@ private:
 		// Return distance to the closest point
 		sf::Vector2f diff = mouse_pos - closestPoint;
 		return std::sqrt(diff.x * diff.x + diff.y * diff.y);
-	}
-
-public:
-
-	std::vector<Particle> particles;
-
-	Solver() : va(sf::Lines) {}
-
-	void SetPaused(bool should_pause) {
-
-		paused = should_pause;
-	}
-
-	bool GetPaused() {
-
-		return paused;
-	}
-
-	void Tear(sf::Vector2f mouse_pos, const std::vector<Constraint>& constraints) {
-
-		Constraint* closest = FindClosestConstraint(mouse_pos, constraints);
-
-		if (!closest) return;
-
-		closest->broken = true;
-	}
-
-	void AddParticle(sf::Vector2f position, float mass, bool is_pinned = false) {
-
-		Particle particle(position, mass, is_pinned);
-
-		particles.push_back(particle);
-	}
-
-	void AddConstraint(Particle* p1, Particle* p2) {
-
-		constraints.emplace_back(p1, p2);
-	}
-
-	void UpdateSolver() {
-
-		if (paused) return;
-
-		const float sub_dt = m_dt / static_cast<float>(sub_steps);
-		for (int i = 0; i < sub_steps; i++) {
-			ApplyGravity();
-			ApplyAirResistance();
-			UpdateObjects(sub_dt);
-			UpdateConstraints();
-			ApplyBorder();
-		}
-
-		RemoveBrokenConstraints();
 	}
 
 	void ApplyGravity() {
@@ -175,6 +122,52 @@ public:
 			if (constraints[i].broken)
 				RemoveConstraint(i);
 		}
+	}
+
+public:
+
+	Solver() : va(sf::Lines) {}
+
+	void SetPaused() {
+
+		paused = !paused;
+	}
+
+	void AddParticle(sf::Vector2f position, float mass, bool is_pinned = false) {
+
+		Particle particle(position, mass, is_pinned);
+
+		particles.push_back(particle);
+	}
+
+	void AddConstraint(Particle* p1, Particle* p2) {
+
+		constraints.emplace_back(p1, p2);
+	}
+
+	void Tear(sf::Vector2f mouse_pos, const std::vector<Constraint>& constraints) {
+
+		Constraint* closest = FindClosestConstraint(mouse_pos, constraints);
+
+		if (!closest) return;
+
+		closest->broken = true;
+	}
+
+	void UpdateSolver() {
+
+		if (paused) return;
+
+		const float sub_dt = m_dt / static_cast<float>(sub_steps);
+		for (int i = 0; i < sub_steps; i++) {
+			ApplyGravity();
+			ApplyAirResistance();
+			UpdateObjects(sub_dt);
+			UpdateConstraints();
+			ApplyBorder();
+		}
+
+		RemoveBrokenConstraints();
 	}
 
 	int UpdateVASize() {

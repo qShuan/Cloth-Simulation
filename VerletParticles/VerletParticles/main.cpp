@@ -1,5 +1,4 @@
 #include "Solver.h"
-
 #include <iostream>
 
 #define ROWS 100
@@ -21,9 +20,9 @@ void Init(Solver& solver) {
 		for (int x = 0; x < COLS; x++) {
 
 			if (x < COLS - 1)
-				solver.AddConstraint(&solver.particles[COLS * y + x], &solver.particles[COLS * y + x + 1]);
+				solver.AddConstraint(&solver.GetParticles()[COLS * y + x], &solver.GetParticles()[COLS * y + x + 1]);
 			if (y < ROWS - 1)
-				solver.AddConstraint(&solver.particles[COLS * y + x], &solver.particles[COLS * (y + 1) + x]);
+				solver.AddConstraint(&solver.GetParticles()[COLS * y + x], &solver.GetParticles()[COLS * (y + 1) + x]);
 		}
 	}
 
@@ -87,7 +86,7 @@ int main(){
 
 		while (window.pollEvent(e)) {
 
-			if (e.type == e.Closed()) {
+			if (e.type == __noop) {
 				window.close();
 			}
 			else if (e.type == e.KeyPressed) {
@@ -98,7 +97,7 @@ int main(){
 				}
 				else if (e.key.code == sf::Keyboard::P) {
 
-					solver.SetPaused(solver.GetPaused() ? false : true);
+					solver.SetPaused();
 				}
 			}
 			else if (e.type == e.MouseButtonPressed) {
