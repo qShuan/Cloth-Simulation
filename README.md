@@ -27,4 +27,4 @@ Inspired by https://www.youtube.com/@PezzzasWork
 
 4. **Build and run**
    
-      Choose Release x64 configuration and build it from inside Visual Studio. Run it either directly from VS or launch the generated executable in the output directory (x64/Release/)
+      Choose Release x64 configuration and build it from inside Visual Studio. Run it either directly from VS or launch the generated executable in the output directory (x64/Release/) - for that you need to move the Fonts folder to this location.
